@@ -10,7 +10,7 @@ use App\Http\Controllers\ErrorController;
 Route::prefix('v1')->group(function () {    
     Route::post('/login', [AuthController::class, 'login']);
     
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth:api')->group(function () {
         Route::get('gifs/search', [GifController::class, 'search']);
         Route::get('gifs/{id}', [GifController::class, 'show']);
         Route::post('gifs/favorite', [FavoriteGifController::class, 'store']);
