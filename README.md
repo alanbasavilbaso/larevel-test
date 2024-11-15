@@ -36,7 +36,7 @@ Este proyecto usa Docker para el entorno de desarrollo de Laravel. Sigue estos p
     docker-compose up -d
     ```
 
-4. Accede a la aplicación en tu navegador en [http://localhost:8123](http://localhost:8123).
+4. Usar collección de postman (incluido debajo)
 
 
 ## Apagar los contenedores
