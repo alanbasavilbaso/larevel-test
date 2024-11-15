@@ -153,18 +153,9 @@ php artisan passport:client --personal
 
 
 ## DER 
-┌──────────────┐    ┌────────────┐        ┌──────────────┐       
-│   ApiLogs    │    │   Users    │        │ FavoriteGifs │       
-├──────────────┤    ├────────────┤        ├──────────────┤       
-│ user_id      │◄──►│ id         │◄──────►│ user_id      │       
-│ id           │    │ name       │        │ gif_id       │       
-│ service_name │    │ email      │        │ title        │       
-│ request_payload│  │ password   │        │ created_at   │       
-│ response_code │   │ created_at │        └──────────────┘       
-│ response_body │   └────────────┘                                 
-│ origin_ip     │
-│ created_at    │
-└───────────────┘                                                         
+
+![DER](https://github.com/alanbasavilbaso/larevel-test/blob/main/DER.jpg)
+                                                     
 
 ## Postman
 
