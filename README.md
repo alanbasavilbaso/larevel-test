@@ -38,6 +38,13 @@ Este proyecto usa Docker para el entorno de desarrollo de Laravel. Sigue estos p
 
 4. Usar collección de postman (incluido debajo)
 
+5. Correr Test
+    ```bash
+    docker exec -it laravel-app bash
+
+    php artisan test
+    ```
+
 
 ## Apagar los contenedores
 

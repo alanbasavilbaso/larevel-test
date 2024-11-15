@@ -16,7 +16,6 @@ class GifController extends Controller
 
     public function search(Request $request)
     {
-        var_dump(auth()->id());exit;
         $validator = Validator::make($request->all(), [
             'query' => 'required|string'
         ]);
