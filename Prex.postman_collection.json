@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "7eac3b16-c59b-4932-a500-df4875c519c5",
+		"name": "Prex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6591911"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{user}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8123/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8123",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Gifts by queryString",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8123/api/v1/gifs/search?query=baby&limit=10&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8123",
+					"path": [
+						"api",
+						"v1",
+						"gifs",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "baby"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Gifts by queryString (without token)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8123/api/v1/gifs/search?query=baby&limit=10&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8123",
+					"path": [
+						"api",
+						"v1",
+						"gifs",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "baby"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Gift by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8123/api/v1/gifs/pkqnVgAiYQx2w",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8123",
+					"path": [
+						"api",
+						"v1",
+						"gifs",
+						"pkqnVgAiYQx2w"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "invalid url",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYmMwZmQ2OTYwOTdkOGJhZmY4YzFmYjAyZjVmYTQ0YjkzNDliYzNhODU2YjY4ZDFjYjllOGMyZTAxYzY4MjUwYTBjZjhkM2M1MjM0OGQyMzkiLCJpYXQiOjE3MzE0NDMxMzQuMTI4OCwibmJmIjoxNzMxNDQzMTM0LjEyODgwMSwiZXhwIjoxNzYyOTc5MTM0LjExOTgxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CQ2OT0iKelOuJprG_35MVhBKc-dHFH3x2l1i7iPgdQ0yIuNgCVRakWuscJUGFux1fY7mo_qshmzlcmX5ZgZJTdYinIho7qhljU-ufMj-6tGC6xn81uDasgXvoi2CofcXYTatZOC4ZUqOb7UMvr9F5LxY9M2aCvNWmEQ0LyYr8GP-1gTIQH-KRzhJdlRp6PUybg_2CtrUpSERf2qIpxdjBMlruS3tXokd6r7p1VpDW_f4Qp1ndDcSTn8c5hJFp6prCF4V4jZKNJPsZXg5AfpwIP0WQKVQiY1PUlTjCuH-TYGPcnfOSl3erMsHL97JJ7NJNDsjVWJOtudu2-m9JQxPTeQSYXplwKtF4bU9XQ4FIOCoknWaoKW_hdng1FDWnQ_q5b4sertJotTrhRZEH1HZr-0qH6zHaRe1aIDmgGsH3Ds_F1bYVffZ5GBT95rikMVOp-n6ovPLNqi4DNCkplVvbZ-Wz46pSGqdPMBenenweiOBSVKVoF0q2_bPlHvslxWm9pn8p1aBKUBM8viKC8IKKwTgx9jbnhjRI9wR8uYznb9YUXChcU4_YZFJlyZeOrllYzzmfHPyGUj_wx9ZLBuhaqY_WmdV9P-EYZRzwXwRkVOhUtEJhpSTfrYuLR9AFQ7VquSQPQXJ3e60LAumlxBi2BMTS_KEIW6tW0ZL2ioSZNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8123/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8123",
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save gift as favorite",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"gif_id\": \"pkqnVgAiYQx2w\",\n    \"alias\": \"baby tarzan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8123/api/v1/gifs/favorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8123",
+					"path": [
+						"api",
+						"v1",
+						"gifs",
+						"favorite"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
