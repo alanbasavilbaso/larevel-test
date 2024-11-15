@@ -33,7 +33,7 @@ Este proyecto usa Docker para el entorno de desarrollo de Laravel. Sigue estos p
 3. Construye y ejecuta los contenedores de Docker en segundo plano:
 
     ```bash
-    docker-compose up -d
+    docker-compose up --build -d
     ```
 
 4. Usar collección de postman (incluido debajo)
